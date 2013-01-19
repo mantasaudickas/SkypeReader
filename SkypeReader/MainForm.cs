@@ -26,6 +26,24 @@ namespace SkypeReader
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Raises the <see cref="E:System.Windows.Forms.Form.Shown"/> event.
+        /// </summary>
+        /// <param name="e">A <see cref="T:System.EventArgs"/> that contains the event data. </param>
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+
+            try
+            {
+                ChooseSkypeDatabase();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
+
         private void listContacts_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -62,26 +80,31 @@ namespace SkypeReader
         {
             try
             {
-                string applicationDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-                string skypeFolder = Path.Combine(applicationDataFolder, "Skype");
-
-                using (OpenFileDialog dialog = new OpenFileDialog())
-                {
-                    dialog.Filter = @"Skype database file|main.db";
-                    dialog.InitialDirectory = skypeFolder;
-                    if (dialog.ShowDialog(this) == DialogResult.OK)
-                    {
-                        _currentDatabaseFilePath = dialog.FileName;
-                        _currentSkypeName = this.LoadContacts(_currentDatabaseFilePath);
-                        this.LoadParticipants(_currentDatabaseFilePath);
-
-                        DisplaySkypeLog(_currentDatabaseFilePath);
-                    }
-                }
+                ChooseSkypeDatabase();
             }
             catch (Exception exc)
             {
                 MessageBox.Show(exc.Message);
+            }
+        }
+
+        private void ChooseSkypeDatabase()
+        {
+            string applicationDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string skypeFolder = Path.Combine(applicationDataFolder, "Skype");
+
+            using (OpenFileDialog dialog = new OpenFileDialog())
+            {
+                dialog.Filter = @"Skype database file|main.db";
+                dialog.InitialDirectory = skypeFolder;
+                if (dialog.ShowDialog(this) == DialogResult.OK)
+                {
+                    _currentDatabaseFilePath = dialog.FileName;
+                    _currentSkypeName = this.LoadContacts(_currentDatabaseFilePath);
+                    this.LoadParticipants(_currentDatabaseFilePath);
+
+                    DisplaySkypeLog(_currentDatabaseFilePath);
+                }
             }
         }
 

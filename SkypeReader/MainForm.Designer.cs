@@ -36,9 +36,9 @@
             this.exitApplicationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer = new System.Windows.Forms.SplitContainer();
             this.listContacts = new System.Windows.Forms.ListBox();
-            this.textHistory = new System.Windows.Forms.WebBrowser();
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.removeCompleteChatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textHistory = new System.Windows.Forms.WebBrowser();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
@@ -114,17 +114,6 @@
             this.listContacts.TabIndex = 0;
             this.listContacts.SelectedIndexChanged += new System.EventHandler(this.listContacts_SelectedIndexChanged);
             // 
-            // textHistory
-            // 
-            this.textHistory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textHistory.Location = new System.Drawing.Point(0, 0);
-            this.textHistory.MinimumSize = new System.Drawing.Size(20, 20);
-            this.textHistory.Name = "textHistory";
-            this.textHistory.Size = new System.Drawing.Size(537, 507);
-            this.textHistory.TabIndex = 0;
-            this.textHistory.Navigating += new System.Windows.Forms.WebBrowserNavigatingEventHandler(this.textHistory_Navigating);
-            this.textHistory.NewWindow += new System.ComponentModel.CancelEventHandler(this.textHistory_NewWindow);
-            // 
             // contextMenuStrip
             // 
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -139,6 +128,17 @@
             this.removeCompleteChatToolStripMenuItem.Text = "Remove Complete Chat";
             this.removeCompleteChatToolStripMenuItem.Click += new System.EventHandler(this.removeCompleteChatToolStripMenuItem_Click);
             // 
+            // textHistory
+            // 
+            this.textHistory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textHistory.Location = new System.Drawing.Point(0, 0);
+            this.textHistory.MinimumSize = new System.Drawing.Size(20, 20);
+            this.textHistory.Name = "textHistory";
+            this.textHistory.Size = new System.Drawing.Size(537, 507);
+            this.textHistory.TabIndex = 0;
+            this.textHistory.Navigating += new System.Windows.Forms.WebBrowserNavigatingEventHandler(this.textHistory_Navigating);
+            this.textHistory.NewWindow += new System.ComponentModel.CancelEventHandler(this.textHistory_NewWindow);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -149,7 +149,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = "Skype Reader";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.splitContainer.Panel1.ResumeLayout(false);
